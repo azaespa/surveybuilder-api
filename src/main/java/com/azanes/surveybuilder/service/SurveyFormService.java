@@ -3,7 +3,6 @@ package com.azanes.surveybuilder.service;
 import com.azanes.surveybuilder.model.SurveyForm;
 import com.azanes.surveybuilder.repo.SurveyFormRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class SurveyFormService {
     }
 
     public SurveyForm addSurveyForm(SurveyForm surveyForm) {
-        surveyForm.setSurveyId(UUID.randomUUID().toString());
+        surveyForm.setSurveyFormId(UUID.randomUUID().toString());
         return surveyFormRepo.save(surveyForm);
     }
 
