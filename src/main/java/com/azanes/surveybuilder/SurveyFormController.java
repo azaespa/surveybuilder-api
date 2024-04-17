@@ -36,4 +36,10 @@ public class SurveyFormController {
         SurveyForm newSurveyForm = surveyFormService.addSurveyForm(surveyForm);
         return new ResponseEntity<>(newSurveyForm, HttpStatus.CREATED);
     }
+
+    @PutMapping("update")
+    public ResponseEntity<SurveyForm> updateSurveyForm(@RequestBody SurveyForm surveyForm) {
+        SurveyForm updateSurveyForm = surveyFormService.updateSurveyForm(surveyForm);
+        return new ResponseEntity<>(updateSurveyForm, HttpStatus.OK);
+    }
 }

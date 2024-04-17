@@ -32,4 +32,8 @@ public class SurveyFormService {
         return surveyFormRepo.findSurveyFormById(id)
                 .orElseThrow(() -> new SurveyFormNotFoundException("SurveyForm " + id + " is not found"));
     }
+
+    public SurveyForm updateSurveyForm(SurveyForm surveyForm) {
+        return surveyFormRepo.save(surveyForm);
+    }
 }
