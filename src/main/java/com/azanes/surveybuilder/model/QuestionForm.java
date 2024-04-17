@@ -13,9 +13,6 @@ public class QuestionForm implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "survey_form_id", nullable = false)
-    private SurveyForm surveyForm;
     private String question;
     private String answerType;
 
@@ -55,7 +52,6 @@ public class QuestionForm implements Serializable {
     public String toString() {
         return "QuestionForm{" +
                 "id=" + id +
-                ", surveyForm=" + surveyForm +
                 ", question='" + question + '\'' +
                 ", answerType='" + answerType + '\'' +
                 '}';
