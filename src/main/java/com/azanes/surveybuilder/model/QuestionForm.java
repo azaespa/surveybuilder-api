@@ -3,6 +3,7 @@ package com.azanes.surveybuilder.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "question_form")
@@ -16,12 +17,11 @@ public class QuestionForm implements Serializable {
     private String question;
     private String answerType;
 
-    public QuestionForm() {
-    }
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_question_form_id", referencedColumnName = "id")
+    private List<ChoicesForm> choicesForms;
 
-    public QuestionForm(String question, String answerType) {
-        this.question = question;
-        this.answerType = answerType;
+    public QuestionForm() {
     }
 
     public Long getId() {
@@ -46,6 +46,14 @@ public class QuestionForm implements Serializable {
 
     public void setAnswerType(String answerType) {
         this.answerType = answerType;
+    }
+
+    public List<ChoicesForm> getChoicesForms() {
+        return choicesForms;
+    }
+
+    public void setChoicesForms(List<ChoicesForm> choicesForms) {
+        this.choicesForms = choicesForms;
     }
 
     @Override

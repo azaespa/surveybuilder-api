@@ -13,14 +13,14 @@ public class SurveyForm implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @Column(name="survey_form_id",nullable = false, updatable = false)
+    @Column(name="survey_form_id",unique = true,nullable = false, updatable = false)
     private String surveyFormId;
 
     private String surveyFormName;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_survey_form_id", referencedColumnName = "survey_form_id")
-    private List<QuestionForm> questionForm;
+    @JoinColumn(name = "fk_survey_form_id", referencedColumnName = "id")
+    private List<QuestionForm> questionForms;
 
     public SurveyForm() {
     }
@@ -41,12 +41,12 @@ public class SurveyForm implements Serializable {
         this.surveyFormId = surveyFormId;
     }
 
-    public List<QuestionForm> getQuestionForm() {
-        return questionForm;
+    public List<QuestionForm> getQuestionForms() {
+        return questionForms;
     }
 
-    public void setQuestionForm(List<QuestionForm> questionForm) {
-        this.questionForm = questionForm;
+    public void setQuestionForms(List<QuestionForm> questionForms) {
+        this.questionForms = questionForms;
     }
 
     public String getSurveyFormName() {
