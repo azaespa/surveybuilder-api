@@ -25,7 +25,7 @@ public class SurveyFormController {
         return new ResponseEntity<>(surveyForms, HttpStatus.OK);
     }
 
-    @GetMapping("find/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<SurveyForm> getSurveyFormById(@PathVariable("id") Long id){
         SurveyForm surveyForm = surveyFormService.findSurveyFormById(id);
         return new ResponseEntity<SurveyForm>(surveyForm, HttpStatus.OK);
@@ -37,7 +37,7 @@ public class SurveyFormController {
         return new ResponseEntity<>(newSurveyForm, HttpStatus.CREATED);
     }
 
-    @PutMapping("update")
+    @PutMapping("/update")
     public ResponseEntity<SurveyForm> updateSurveyForm(@RequestBody SurveyForm surveyForm) {
         SurveyForm updateSurveyForm = surveyFormService.updateSurveyForm(surveyForm);
         return new ResponseEntity<>(updateSurveyForm, HttpStatus.OK);

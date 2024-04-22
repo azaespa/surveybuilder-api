@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuestionFormService {
@@ -22,5 +23,9 @@ public class QuestionFormService {
 
     public List<QuestionForm> findAllQuestionForm() {
         return questionFormRepo.findAll();
+    }
+
+    public QuestionForm updateQuestionForm(QuestionForm questionForm) {
+        return questionFormRepo.save(questionForm);
     }
 }

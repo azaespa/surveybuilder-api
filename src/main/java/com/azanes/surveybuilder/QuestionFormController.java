@@ -5,9 +5,7 @@ import com.azanes.surveybuilder.service.QuestionFormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,11 @@ public class QuestionFormController {
     public ResponseEntity<List<QuestionForm>> findAllQuestionForm() {
         List<QuestionForm> questionForms = this.questionFormService.findAllQuestionForm();
         return new ResponseEntity<>(questionForms, HttpStatus.OK);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<QuestionForm> updateQuestionForm(@RequestBody QuestionForm questionForm) {
+        QuestionForm updateQuestionForm = questionFormService.updateQuestionForm(questionForm);
+        return new ResponseEntity<>(updateQuestionForm, HttpStatus.OK);
     }
 }

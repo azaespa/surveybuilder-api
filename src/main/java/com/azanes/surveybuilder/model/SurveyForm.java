@@ -13,8 +13,6 @@ public class SurveyForm implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @Column(name="survey_form_id",unique = true,nullable = false, updatable = false)
-    private String surveyFormId;
 
     private String surveyFormName;
 
@@ -31,14 +29,6 @@ public class SurveyForm implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSurveyFormId() {
-        return surveyFormId;
-    }
-
-    public void setSurveyFormId(String surveyFormId) {
-        this.surveyFormId = surveyFormId;
     }
 
     public List<QuestionForm> getQuestionForms() {
@@ -59,9 +49,10 @@ public class SurveyForm implements Serializable {
 
     @Override
     public String toString() {
-        return "SurveyForm {" +
+        return "SurveyForm{" +
                 "id=" + id +
-                ", questionId='" + surveyFormId + '\'' +
+                ", surveyFormName='" + surveyFormName + '\'' +
+                ", questionForms=" + questionForms +
                 '}';
     }
 }
