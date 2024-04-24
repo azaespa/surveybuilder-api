@@ -20,15 +20,15 @@ public class SurveyFormController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<SurveyForm>> getAllSurveyForm() {
+    public ResponseEntity<List<SurveyForm>> findAllSurveyForm() {
         List<SurveyForm> surveyForms = surveyFormService.findAllSurveyForm();
         return new ResponseEntity<>(surveyForms, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<SurveyForm> getSurveyFormById(@PathVariable("id") Long id){
+    public ResponseEntity<SurveyForm> findSurveyFormById(@PathVariable("id") Long id){
         SurveyForm surveyForm = surveyFormService.findSurveyFormById(id);
-        return new ResponseEntity<SurveyForm>(surveyForm, HttpStatus.OK);
+        return new ResponseEntity<>(surveyForm, HttpStatus.OK);
     }
 
     @PostMapping("/add")

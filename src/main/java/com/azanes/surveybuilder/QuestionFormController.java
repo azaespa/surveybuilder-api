@@ -25,6 +25,18 @@ public class QuestionFormController {
         return new ResponseEntity<>(questionForms, HttpStatus.OK);
     }
 
+    @GetMapping("/find/{id}")
+    public ResponseEntity<QuestionForm> findQuestionFormById(@PathVariable("id") Long id){
+        QuestionForm questionForm = questionFormService.findQuestionFormById(id);
+        return new ResponseEntity<>(questionForm, HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<QuestionForm> addQuestionForm(@RequestBody QuestionForm questionForm) {
+        QuestionForm newQuestionForm = questionFormService.addQuestionForm(questionForm);
+        return new ResponseEntity<>(newQuestionForm, HttpStatus.OK);
+    }
+
     @PutMapping("/update")
     public ResponseEntity<QuestionForm> updateQuestionForm(@RequestBody QuestionForm questionForm) {
         QuestionForm updateQuestionForm = questionFormService.updateQuestionForm(questionForm);

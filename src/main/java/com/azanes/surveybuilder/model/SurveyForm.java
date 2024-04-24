@@ -1,5 +1,6 @@
 package com.azanes.surveybuilder.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
