@@ -1,14 +1,12 @@
-package com.azanes.surveybuilder;
+package com.azanes.surveybuilder.controller;
 
 import com.azanes.surveybuilder.model.ChoicesForm;
-import com.azanes.surveybuilder.repo.ChoicesFormRepo;
 import com.azanes.surveybuilder.service.ChoicesFormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.util.List;
 
 @RestController

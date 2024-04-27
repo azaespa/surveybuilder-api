@@ -1,4 +1,4 @@
-package com.azanes.surveybuilder;
+package com.azanes.surveybuilder.controller;
 
 import com.azanes.surveybuilder.model.SurveyForm;
 import com.azanes.surveybuilder.service.SurveyFormService;
