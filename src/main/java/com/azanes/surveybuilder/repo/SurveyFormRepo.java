@@ -9,5 +9,7 @@ import java.util.Optional;
 
 public interface SurveyFormRepo extends JpaRepository<SurveyForm, Long> {
     Optional<SurveyForm> findSurveyFormById(Long id);
+
+    Optional<List<SurveyForm>> findAllByUserId(Long userId);
 }
 

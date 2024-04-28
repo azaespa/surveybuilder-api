@@ -17,8 +17,7 @@ public class User implements Serializable {
     private String username;
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "user")
     private List<SurveyForm> surveyForms;
 
     public User() {

@@ -1,5 +1,6 @@
 package com.azanes.surveybuilder.model;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -20,6 +21,11 @@ public class SurveyForm implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_survey_form_id", referencedColumnName = "id")
     private List<QuestionForm> questionForms;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    @JsonIncludeProperties(value = "id")
+    private User user;
 
     public SurveyForm() {
     }
@@ -46,6 +52,14 @@ public class SurveyForm implements Serializable {
 
     public void setSurveyFormName(String surveyFormName) {
         this.surveyFormName = surveyFormName;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

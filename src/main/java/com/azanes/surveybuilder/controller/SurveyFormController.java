@@ -1,6 +1,7 @@
 package com.azanes.surveybuilder.controller;
 
 import com.azanes.surveybuilder.model.SurveyForm;
+import com.azanes.surveybuilder.model.User;
 import com.azanes.surveybuilder.service.SurveyFormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,15 +26,21 @@ public class SurveyFormController {
         return new ResponseEntity<>(surveyForms, HttpStatus.OK);
     }
 
+    @GetMapping("/{userId}/all")
+    public ResponseEntity<List<SurveyForm>> findAllSurveyFormByUserId(@PathVariable("userId") Long userId) {
+        List<SurveyForm> surveyForms = surveyFormService.findAllSurveyFormByUserId(userId);
+        return new ResponseEntity<>(surveyForms, HttpStatus.OK);
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<SurveyForm> findSurveyFormById(@PathVariable("id") Long id){
         SurveyForm surveyForm = surveyFormService.findSurveyFormById(id);
         return new ResponseEntity<>(surveyForm, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<SurveyForm> addSurveyForm(@RequestBody SurveyForm surveyForm) {
-        SurveyForm newSurveyForm = surveyFormService.addSurveyForm(surveyForm);
+    @PostMapping("/{userId}/add")
+    public ResponseEntity<SurveyForm> addSurveyForm(@PathVariable("userId") User user, @RequestBody SurveyForm surveyForm) {
+        SurveyForm newSurveyForm = surveyFormService.addSurveyForm(user, surveyForm);
         return new ResponseEntity<>(newSurveyForm, HttpStatus.CREATED);
     }
 
