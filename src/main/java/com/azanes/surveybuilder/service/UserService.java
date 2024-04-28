@@ -35,8 +35,6 @@ public class UserService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already taken."));
     }
 
-    //CREATE METHOD: IN LOGIN, IF USER EXISTS, VALIDATE IF ENTERED PASSWORD IS CORRECT
-
     //USE IN SIGNUP PAGE
     public User addUser(User user) {
         if (userRepo.findUserByUsername(user.getUsername()).isPresent()) {

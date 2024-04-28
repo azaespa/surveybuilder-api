@@ -3,6 +3,7 @@ package com.azanes.surveybuilder.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -15,6 +16,10 @@ public class User implements Serializable {
 
     private String username;
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private List<SurveyForm> surveyForms;
 
     public User() {
     }
@@ -46,6 +51,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<SurveyForm> getSurveyForms() {
+        return surveyForms;
+    }
+
+    public void setSurveyForms(List<SurveyForm> surveyForms) {
+        this.surveyForms = surveyForms;
     }
 
     @Override
