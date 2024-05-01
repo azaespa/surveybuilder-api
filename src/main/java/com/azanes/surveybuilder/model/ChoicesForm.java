@@ -1,5 +1,6 @@
 package com.azanes.surveybuilder.model;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -14,6 +15,11 @@ public class ChoicesForm implements Serializable {
     private long id;
     private String choiceLetter;
     private String choice;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "question_form_id")
+    @JsonIncludeProperties(value = "id")
+    private QuestionForm questionForm;
 
     public ChoicesForm() {
     }

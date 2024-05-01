@@ -14,7 +14,10 @@ public class User implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String username;
+
+    @Column(nullable = false)
     private String password;
 
     @OneToMany(mappedBy = "user")

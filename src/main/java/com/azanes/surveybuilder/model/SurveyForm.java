@@ -18,8 +18,7 @@ public class SurveyForm implements Serializable {
 
     private String surveyFormName;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_survey_form_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "surveyForm", cascade = CascadeType.ALL)
     private List<QuestionForm> questionForms;
 
     @ManyToOne(cascade = CascadeType.ALL)

@@ -1,6 +1,7 @@
 package com.azanes.surveybuilder.controller;
 
 import com.azanes.surveybuilder.model.QuestionForm;
+import com.azanes.surveybuilder.model.SurveyForm;
 import com.azanes.surveybuilder.service.QuestionFormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,10 +32,16 @@ public class QuestionFormController {
         return new ResponseEntity<>(questionForm, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<QuestionForm> addQuestionForm(@RequestBody QuestionForm questionForm) {
-        QuestionForm newQuestionForm = questionFormService.addQuestionForm(questionForm);
-        return new ResponseEntity<>(newQuestionForm, HttpStatus.OK);
+    @GetMapping("/{surveyFormId}/all")
+    public ResponseEntity<List<QuestionForm>> findAllQuestionFormBySfId(@PathVariable("surveyFormId") Long surveyFormId) {
+        List<QuestionForm> questionForms = this.questionFormService.findAllQuestionFormBySfId(surveyFormId);
+        return new ResponseEntity<>(questionForms, HttpStatus.OK);
+    }
+
+    @PostMapping("/{surveyFormId}/add")
+    public ResponseEntity<QuestionForm> addQuestionForm(@PathVariable("surveyFormId") SurveyForm surveyForm, @RequestBody QuestionForm questionForm) {
+        QuestionForm newQuestionForm = questionFormService.addQuestionForm(surveyForm ,questionForm);
+        return new ResponseEntity<>(newQuestionForm, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
